@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/katalog-muzyczny/databases/katalog",
+      "type": "mssql.azure",
+      "connectionId": "sqlserver://katalog-muzyczny.database.windows.net:1433;database=katalog;user=franek@katalog-muzyczny;password={KatalogMuzyczny2021!};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "sqlserver://katalog-muzyczny.database.windows.net:1433;database=katalog;user=franek@katalog-muzyczny;password={KatalogMuzyczny2021!};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+    }
+  }
+}
