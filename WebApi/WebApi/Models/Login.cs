@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class AuthenticateRequest
+    public class Login
     {
         [Required]
         public string Username { get; set; }
