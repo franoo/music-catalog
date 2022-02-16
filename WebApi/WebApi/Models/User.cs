@@ -15,5 +15,7 @@ namespace WebApi.Models
         public string Username { get; set; }
         [JsonIgnore]
         public string PasswordHash { get; set; }
+        [JsonIgnore]
+        public string PasswordSalt { get; set; }
     }
 }
