@@ -9,7 +9,7 @@ namespace WebApi.Context
            : base(options)
         {
         }
-        public DbSet<Distributor> Distributors { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Album> Albums { get; set; }
     }

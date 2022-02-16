@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class Distributor
+    public class User
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Login { get; set; }
+        public string Username { get; set; }
         [JsonIgnore]
         public string PasswordHash { get; set; }
     }

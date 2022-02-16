@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class LoginResponse
+    public class UserDTO
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Username { get; set; }
-        public string JwtToken { get; set; }
+
     }
 }
