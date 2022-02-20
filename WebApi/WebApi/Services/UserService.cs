@@ -12,7 +12,7 @@ namespace WebApi.Services
 {
     public interface IUserService
     {
-        UserDTO GetUser(LoginRequest login);
+        UserDTO VerifyUser(LoginRequest login);
         string HashPassword(string password);
     }
         public class UserService: IUserService
@@ -20,15 +20,21 @@ namespace WebApi.Services
         private DatabaseContext _context;
         private readonly IMapper _mapper;
 
-        public UserService(DatabaseContext context)
+        public UserService(DatabaseContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public UserDTO GetUser(LoginRequest login) {
+        public UserDTO VerifyUser(LoginRequest login) {
 
-            string passwordHash = this.HashPassword(login.Password);
-            User user = _context.Users.SingleOrDefault(x => x.Username == login.Username && x.PasswordHash == passwordHash);
-            return _mapper.Map<UserDTO>(user);
+            //string passwordHash = this.HashPassword(login.Password);
+
+            User user = _context.Users.SingleOrDefault(x => x.Username == login.Username);
+            if (user != null && ValidatePassword(login.Password, user.PasswordSalt, user.PasswordHash))
+            {
+                return _mapper.Map<UserDTO>(user);
+            }
+            return null;
         }
 
         public string HashPassword(string password)

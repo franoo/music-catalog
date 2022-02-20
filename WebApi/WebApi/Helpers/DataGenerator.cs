@@ -30,6 +30,20 @@ namespace WebApi.Helpers
                         ReleaseDate = DateTime.Now.AddDays(-1),
                         DistributorId = 1,
                     });
+                if (context.Users.Any())
+                {
+                    return;
+                }
+                context.Users.AddRange(
+                    new User
+                    {
+                        Id = 1,
+                        Name = "Polskie Nagrania",
+                        PasswordSalt = "ig4TSjG8trhGIGyJ8rsmwg==",//password haslo
+                        PasswordHash = "kHjpE6CJPFEucQFoxV88/Zi7GNKV5yo2pwG4oUELeRk=",
+                        Username = "franek"
+                    }
+                    );
                 context.SaveChanges();
             }
         }

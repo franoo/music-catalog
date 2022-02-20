@@ -13,6 +13,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthController : Controller
     {
         private readonly IUserService _userService;
@@ -34,14 +35,16 @@ namespace WebApi.Controllers
                 return BadRequest();
             }
 
-            var validUser = _userService.GetUser(login);
+            var validUser = _userService.VerifyUser(login);
 
             if(validUser != null)
             {
                 var generatedToken = _tokenService.BuildToken(validUser);
                 Console.Write(generatedToken);
+                LoginResponse loginResponse = new LoginResponse { Id = validUser.Id, Username = validUser.Username, JwtToken = generatedToken };
+                return Ok(loginResponse);
             }
-            return Ok(null);
+            return BadRequest();
         }
 
         [AllowAnonymous]//test method
