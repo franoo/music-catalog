@@ -32,19 +32,19 @@ namespace WebApi.Services
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.NameIdentifier,
                 Guid.NewGuid().ToString()),
-                new Claim("id", user.Id.ToString())
+                new Claim("id", user.UserID.ToString())
             };
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"].ToString()));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
-            var tokenDescriptor = new JwtSecurityToken(_config["Jwt:Issuer"].ToString(), _config["Jwt:Issuer"].ToString(), claims,
+            var tokenDescriptor = new JwtSecurityToken(null, null, claims,
                 expires: DateTime.UtcNow.AddHours(EXPIRY_DURATION_HOURS), signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
         public int? ValidateToken(string token)//returns id of user
         {
-            var mySecret = Encoding.UTF8.GetBytes(_config["Jwt:Key"].ToString());
-            var mySecurityKey = new SymmetricSecurityKey(mySecret);
+            //var mySecret = Encoding.UTF8.GetBytes(_config["Jwt:Key"].ToString());
+            //var mySecurityKey = new SymmetricSecurityKey(mySecret);
             var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
@@ -54,7 +54,10 @@ namespace WebApi.Services
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    IssuerSigningKey = mySecurityKey,
+                    IssuerSigningKey = new
+                            SymmetricSecurityKey
+                            (Encoding.UTF8.GetBytes
+                            (_config["Jwt:Key"])),
                 }, out SecurityToken validatedToken);
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);

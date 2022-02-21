@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Context;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -15,17 +16,37 @@ namespace WebApi.Controllers
     public class AlbumsController : ControllerBase
     {
         private readonly DatabaseContext _context;
+        private ITokenService _tokenService;
 
-        public AlbumsController(DatabaseContext context)
+        public AlbumsController(DatabaseContext context, ITokenService tokenService)
         {
             _context = context;
+            _tokenService = tokenService;
         }
 
         // GET: api/Albums
+        //modify to get only albums related to logged user
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums(string sortOrder)
         {
-            return await _context.Albums.ToListAsync();
+            var token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            var id = _tokenService.ValidateToken(token);
+            if (id != null)
+            {
+                var albums = await _context.Albums.Where(a => a.UserID == id).ToListAsync();
+                return Ok(albums);
+
+                /*
+                //testing how to get data from joined table of tracks
+                var albums = await _context.Albums.Where(a => a.UserID == id).Join(_context.Tracks, album=> album.AlbumID, track=> track.Album.AlbumID,
+                (album, track) => new
+                {
+                    TrackId = track.TrackNumber,
+                    Title = track.Title
+                }
+                 */
+            }
+            return NotFound();
         }
 
         // GET: api/Albums/5

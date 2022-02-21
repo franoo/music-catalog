@@ -41,7 +41,7 @@ namespace WebApi.Controllers
             {
                 var generatedToken = _tokenService.BuildToken(validUser);
                 Console.Write(generatedToken);
-                LoginResponse loginResponse = new LoginResponse { Id = validUser.Id, Username = validUser.Username, JwtToken = generatedToken };
+                LoginResponse loginResponse = new LoginResponse { Id = validUser.UserID, Username = validUser.Username, JwtToken = generatedToken };
                 return Ok(loginResponse);
             }
             return BadRequest();

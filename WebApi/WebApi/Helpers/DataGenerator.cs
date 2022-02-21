@@ -90,7 +90,8 @@ namespace WebApi.Helpers
                         Title = "Intro",
                         ArtistName = "Koniec Lata",
                         ReleaseDate = DateTime.Now.AddYears(-3),
-                        AlbumID = 1
+                        AlbumID = 1,
+                        TrackNumber = 1
                     },
                     new Track
                     {
@@ -98,7 +99,8 @@ namespace WebApi.Helpers
                         Title = "Intro Instrumental",
                         ArtistName = "Koniec Lata",
                         ReleaseDate = DateTime.Now.AddYears(-3),
-                        AlbumID = 1
+                        AlbumID = 1,
+                        TrackNumber = 2
                     },
                     new Track
                     {
@@ -106,7 +108,8 @@ namespace WebApi.Helpers
                         Title = "ATV1",
                         ArtistName = "FKR",
                         ReleaseDate = DateTime.Now,
-                        AlbumID = 2
+                        AlbumID = 2,
+                        TrackNumber = 1
                     },
                     new Track
                     {
@@ -114,7 +117,8 @@ namespace WebApi.Helpers
                         Title = "ATV2",
                         ArtistName = "ABRTH",
                         ReleaseDate = DateTime.Now,
-                        AlbumID = 2
+                        AlbumID = 2,
+                        TrackNumber = 1
                     }
                 };
                 foreach(Track t in tracks)
