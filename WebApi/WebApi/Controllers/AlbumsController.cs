@@ -49,7 +49,7 @@ namespace WebApi.Controllers
                         albums = albums.Where(a => a.Title.Contains(search));
                     }
                 }
-                var result =  await albums.ToListAsync();
+                var result =  await albums.Include(album => album.Tracks.OrderBy(t => t.TrackNumber)).ToListAsync();
                 if (result != null)
                     return Ok(result);
                 return NoContent();
@@ -70,14 +70,27 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Album>> GetAlbum(int id)
         {
-            var album = await _context.Albums.FindAsync(id);
-
-            if (album == null)
+            var token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            var userId = _tokenService.ValidateToken(token);
+            if (userId != null)
             {
-                return NotFound();
+                //var album = await _context.Albums.Where(a => a.UserID == userId && a.AlbumID == id)
+                //    .Join(_context.Tracks, album => album.AlbumID, track => track.Album.AlbumID,
+                //(album, track) => new
+                //{
+                //    TrackId = track.TrackNumber,
+                //    Title = track.Title
+                //}).ToListAsync();
+                var album =  await _context.Albums.Where(a => a.UserID == userId && a.AlbumID == id)
+                    .Include(album => album.Tracks.OrderBy(t=>t.TrackNumber)).SingleOrDefaultAsync();
+                
+                if (album != null)
+                {
+                    return Ok(album);
+                }
             }
 
-            return album;
+            return NotFound();
         }
 
         // PUT: api/Albums/5

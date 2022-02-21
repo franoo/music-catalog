@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WebApi.Models
@@ -21,6 +22,7 @@ namespace WebApi.Models
         public int ReleaseYear { get; set; }
         [Required]
         public int AlbumID { get; set; }
+        [JsonIgnore]
         public Album Album { get; set; }
     }
 }

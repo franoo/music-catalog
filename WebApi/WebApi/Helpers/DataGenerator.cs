@@ -50,7 +50,7 @@ namespace WebApi.Helpers
                     new Album
                     {
                         //AlbumID = 1,
-                        Title = "Intro Katowice",
+                        Title = "Lato Widzę",
                         ArtistName = "Koniec Lata",
                         Version = "singiel",
                         ReleaseYear = 2019,
@@ -90,7 +90,7 @@ namespace WebApi.Helpers
                         Title = "Intro",
                         ArtistName = "Koniec Lata",
                         ReleaseYear = 2019,
-                        AlbumID = 1,
+                        AlbumID = 2,
                         TrackNumber = 1,
                         Length= 190
                     },
@@ -100,7 +100,7 @@ namespace WebApi.Helpers
                         Title = "Intro Instrumental",
                         ArtistName = "Koniec Lata",
                         ReleaseYear = 2019,
-                        AlbumID = 1,
+                        AlbumID = 2,
                         TrackNumber = 2,
                         Length= 191
                     },
@@ -110,7 +110,7 @@ namespace WebApi.Helpers
                         Title = "ATV1",
                         ArtistName = "FKR",
                         ReleaseYear = 2021,
-                        AlbumID = 2,
+                        AlbumID = 1,
                         TrackNumber = 1,
                         Length= 380
                     },
@@ -120,8 +120,8 @@ namespace WebApi.Helpers
                         Title = "ATV2",
                         ArtistName = "ABRTH",
                         ReleaseYear = 2022,
-                        AlbumID = 2,
-                        TrackNumber = 1,
+                        AlbumID = 1,
+                        TrackNumber = 2,
                         Length= 385
                     }
                 };
