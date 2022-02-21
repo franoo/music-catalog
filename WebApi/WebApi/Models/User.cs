@@ -10,12 +10,13 @@ namespace WebApi.Models
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public int UserID { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
         [JsonIgnore]
         public string PasswordHash { get; set; }
         [JsonIgnore]
         public string PasswordSalt { get; set; }
+        public ICollection<Album> Albums { get; set; }
     }
 }

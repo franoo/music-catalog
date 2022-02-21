@@ -47,7 +47,7 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAlbum(int id, Album album)
         {
-            if (id != album.Id)
+            if (id != album.AlbumID)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace WebApi.Controllers
             _context.Albums.Add(album);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAlbum", new { id = album.Id }, album);
+            return CreatedAtAction("GetAlbum", new { id = album.AlbumID }, album);
         }
 
         // DELETE: api/Albums/5
@@ -102,7 +102,7 @@ namespace WebApi.Controllers
 
         private bool AlbumExists(int id)
         {
-            return _context.Albums.Any(e => e.Id == id);
+            return _context.Albums.Any(e => e.AlbumID == id);
         }
     }
 }

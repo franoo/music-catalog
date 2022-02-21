@@ -9,7 +9,7 @@ namespace WebApi.Models
     public class Album
     {
         [Key]
-        public int Id { get; set; }
+        public int AlbumID { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
@@ -18,8 +18,11 @@ namespace WebApi.Models
         [Required]
         public DateTime ReleaseDate { get; set; }
         [Required]
-        public int DistributorId { get; set; }
+        public int UserID { get; set; }
+        public string PictureURL { get; set; }
 
+        public ICollection<Track> Tracks { get; set; }
+        public User User { get; set; }
 
     }
 }

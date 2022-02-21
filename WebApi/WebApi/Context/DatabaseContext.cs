@@ -12,5 +12,12 @@ namespace WebApi.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Album> Albums { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Track>().ToTable("Tracks");
+            modelBuilder.Entity<Album>().ToTable("Albums");
+        }
     }
 }

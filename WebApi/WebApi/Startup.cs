@@ -42,7 +42,8 @@ namespace WebApi
             });
 
             services.AddDbContext<DatabaseContext>(opt =>
-                                   opt.UseInMemoryDatabase(databaseName: "Catalog"));
+                                  // opt.UseInMemoryDatabase(databaseName: "Catalog"));
+                                  opt.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Catalog;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
