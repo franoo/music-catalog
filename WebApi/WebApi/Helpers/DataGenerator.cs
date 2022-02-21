@@ -53,7 +53,7 @@ namespace WebApi.Helpers
                         Title = "Intro Katowice",
                         ArtistName = "Koniec Lata",
                         Version = "singiel",
-                        ReleaseDate = DateTime.Now.AddYears(-3),
+                        ReleaseYear = 2019,
                         UserID = 1,
                         PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1607376173257?alt=media&token=5bc65302-f7b9-4559-a9c6-d47390879a0f"
                     },
@@ -63,7 +63,7 @@ namespace WebApi.Helpers
                         Title = "VA [ATV001]",
                         ArtistName = "Various Artist",
                         Version = "kompilacja",
-                        ReleaseDate = DateTime.Now,
+                        ReleaseYear = 2022,
                         UserID = 1,
                         PictureURL = "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/atawizm.jpg?alt=media&token=301bc9c0-6d6d-400d-b92d-3b2c28a3c64b",
                     },
@@ -73,7 +73,7 @@ namespace WebApi.Helpers
                         Title = "VA [ATV002]",
                         ArtistName = "Various Artist",
                         Version = "kompilacja2",
-                        ReleaseDate = DateTime.Now,
+                        ReleaseYear = 2022,
                         UserID = 2,
                         PictureURL = "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/atawizm.jpg?alt=media&token=301bc9c0-6d6d-400d-b92d-3b2c28a3c64b",
                     }
@@ -89,36 +89,40 @@ namespace WebApi.Helpers
                         //ID = 1,
                         Title = "Intro",
                         ArtistName = "Koniec Lata",
-                        ReleaseDate = DateTime.Now.AddYears(-3),
+                        ReleaseYear = 2019,
                         AlbumID = 1,
-                        TrackNumber = 1
+                        TrackNumber = 1,
+                        Length= 190
                     },
                     new Track
                     {
                         //ID = 2,
                         Title = "Intro Instrumental",
                         ArtistName = "Koniec Lata",
-                        ReleaseDate = DateTime.Now.AddYears(-3),
+                        ReleaseYear = 2019,
                         AlbumID = 1,
-                        TrackNumber = 2
+                        TrackNumber = 2,
+                        Length= 191
                     },
                     new Track
                     {
                         //ID = 3,
                         Title = "ATV1",
                         ArtistName = "FKR",
-                        ReleaseDate = DateTime.Now,
+                        ReleaseYear = 2021,
                         AlbumID = 2,
-                        TrackNumber = 1
+                        TrackNumber = 1,
+                        Length= 380
                     },
                     new Track
                     {
                         //ID = 4,
                         Title = "ATV2",
                         ArtistName = "ABRTH",
-                        ReleaseDate = DateTime.Now,
+                        ReleaseYear = 2022,
                         AlbumID = 2,
-                        TrackNumber = 1
+                        TrackNumber = 1,
+                        Length= 385
                     }
                 };
                 foreach(Track t in tracks)

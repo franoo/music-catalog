@@ -14,10 +14,11 @@ namespace WebApi.Models
         public string Title { get; set; }
         [Required]
         public int TrackNumber { get; set; }
+        public int Length { get; set; }//seconds
         [Required]
         public string ArtistName { get; set; }
         [Required]
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
         [Required]
         public int AlbumID { get; set; }
         public Album Album { get; set; }

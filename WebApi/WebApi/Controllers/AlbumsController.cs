@@ -27,15 +27,32 @@ namespace WebApi.Controllers
         // GET: api/Albums
         //modify to get only albums related to logged user
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums(string sortOrder)
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums( string search, string field)
         {
             var token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             var id = _tokenService.ValidateToken(token);
             if (id != null)
             {
-                var albums = await _context.Albums.Where(a => a.UserID == id).ToListAsync();
-                return Ok(albums);
-
+                var albums = _context.Albums.Where(a => a.UserID == id);//.ToListAsync();
+                if (!String.IsNullOrEmpty(search) && !String.IsNullOrEmpty(field))
+                {
+                    if (field == "date")
+                    {
+                        albums = albums.Where(a => a.ReleaseYear == int.Parse(search));
+                    }
+                    else if (field == "artist")
+                    {
+                        albums = albums.Where(a => a.ArtistName.Contains(search));
+                    }
+                    else if (field == "title")
+                    {
+                        albums = albums.Where(a => a.Title.Contains(search));
+                    }
+                }
+                var result =  await albums.ToListAsync();
+                if (result != null)
+                    return Ok(result);
+                return NoContent();
                 /*
                 //testing how to get data from joined table of tracks
                 var albums = await _context.Albums.Where(a => a.UserID == id).Join(_context.Tracks, album=> album.AlbumID, track=> track.Album.AlbumID,

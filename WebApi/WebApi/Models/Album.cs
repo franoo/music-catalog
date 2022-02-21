@@ -16,7 +16,7 @@ namespace WebApi.Models
         public string ArtistName { get; set; }
         public string Version { get; set; }
         [Required]
-        public DateTime ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
         [Required]
         public int UserID { get; set; }
         public string PictureURL { get; set; }
