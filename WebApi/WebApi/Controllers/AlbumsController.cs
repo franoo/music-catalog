@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,8 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Albums
-        //modify to get only albums related to logged user
+        //modify to get only albums of logged user
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums( string search, string field)
         {
@@ -34,34 +36,33 @@ namespace WebApi.Controllers
             if (id != null)
             {
                 var albums = _context.Albums.Where(a => a.UserID == id);//.ToListAsync();
-                if (!String.IsNullOrEmpty(search) && !String.IsNullOrEmpty(field))
+                try
                 {
-                    if (field == "date")
+                    if (!String.IsNullOrEmpty(search) && !String.IsNullOrEmpty(field))
                     {
-                        albums = albums.Where(a => a.ReleaseYear == int.Parse(search));
+                        if (field == "date")
+                        {
+                            albums = albums.Where(a => a.ReleaseYear == int.Parse(search));
+                        }
+                        else if (field == "artist")
+                        {
+                            albums = albums.Where(a => a.ArtistName.Contains(search));
+                        }
+                        else if (field == "title")
+                        {
+                            albums = albums.Where(a => a.Title.Contains(search));
+                        }
                     }
-                    else if (field == "artist")
+                    var result = await albums.Include(album => album.Tracks.OrderBy(t => t.TrackNumber)).ToListAsync();
+                    if (result != null)
                     {
-                        albums = albums.Where(a => a.ArtistName.Contains(search));
-                    }
-                    else if (field == "title")
-                    {
-                        albums = albums.Where(a => a.Title.Contains(search));
+                        return Ok(result);
                     }
                 }
-                var result =  await albums.Include(album => album.Tracks.OrderBy(t => t.TrackNumber)).ToListAsync();
-                if (result != null)
-                    return Ok(result);
-                return NoContent();
-                /*
-                //testing how to get data from joined table of tracks
-                var albums = await _context.Albums.Where(a => a.UserID == id).Join(_context.Tracks, album=> album.AlbumID, track=> track.Album.AlbumID,
-                (album, track) => new
+                catch (InvalidOperationException e)
                 {
-                    TrackId = track.TrackNumber,
-                    Title = track.Title
+                    return BadRequest();
                 }
-                 */
             }
             return NotFound();
         }
@@ -74,13 +75,6 @@ namespace WebApi.Controllers
             var userId = _tokenService.ValidateToken(token);
             if (userId != null)
             {
-                //var album = await _context.Albums.Where(a => a.UserID == userId && a.AlbumID == id)
-                //    .Join(_context.Tracks, album => album.AlbumID, track => track.Album.AlbumID,
-                //(album, track) => new
-                //{
-                //    TrackId = track.TrackNumber,
-                //    Title = track.Title
-                //}).ToListAsync();
                 var album =  await _context.Albums.Where(a => a.UserID == userId && a.AlbumID == id)
                     .Include(album => album.Tracks.OrderBy(t=>t.TrackNumber)).SingleOrDefaultAsync();
                 
@@ -136,6 +130,7 @@ namespace WebApi.Controllers
         }
 
         // DELETE: api/Albums/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlbum(int id)
         {
