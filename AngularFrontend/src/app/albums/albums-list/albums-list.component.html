@@ -1,1 +1,7 @@
-<p>albums-list works!</p>
+<div class="uk-text-center">
+    <ul class="uk-list">
+        <li *ngFor="let album of this.albums; let i = index">
+            <app-album [album]=album></app-album>
+        </li>
+    </ul>
+</div>

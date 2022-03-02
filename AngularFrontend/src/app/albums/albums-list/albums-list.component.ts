@@ -20,4 +20,8 @@ export class AlbumsListComponent implements OnInit {
       console.log(this.albums);
     })
   }
+
+  onArtistSelected(index: number){
+    console.log(index);
+  }
 }

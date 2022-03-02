@@ -10,6 +10,7 @@ import { AlbumComponent } from './albums/album/album.component';
 import { AlbumsListComponent } from './albums/albums-list/albums-list.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { AlbumDetailsComponent } from './albums/album-details/album-details.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
     LoginComponent,
     AlbumComponent,
     AlbumsListComponent,
+    AlbumDetailsComponent,
   ],
   imports: [
     BrowserModule,

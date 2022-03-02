@@ -1,1 +1,16 @@
-<p>album works!</p>
+<div>
+    <div class="uk-height-match> uk-background-cover uk-light" 
+        uk-parallax="bgy: -50"  
+        style="background-image: url({{album.pictureURL}});">
+        <div class="uk-text-center uk-child-width-1-1 uk-grid-row-medium" uk-grid>
+            <a [routerLink]="[album.albumID]"
+            routerLinkActive="active">
+                <h1>{{album.title}}</h1>
+                <h2>{{album.artistName}}</h2>
+                <h3>{{album.releaseYear}}</h3>
+                <p>{{album.version}}</p>
+                <p>utwory: {{tracksAmount}}</p>
+            </a>
+        </div>
+    </div>
+</div>

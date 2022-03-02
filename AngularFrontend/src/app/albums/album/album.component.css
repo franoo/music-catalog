@@ -1,0 +1,15 @@
+
+h1, h2, h3, p{
+    text-shadow: 5px 5px 10px #000000;
+  }
+
+  .background{
+    filter: blur(8px);
+    position: fixed;
+    z-index: 1;
+  }
+
+  .content{
+    position: fixed;
+    z-index: 9999;
+  }
