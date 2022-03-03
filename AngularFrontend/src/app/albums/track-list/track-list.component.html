@@ -1,0 +1,43 @@
+<ul class="uk-list">
+    <li>
+        <div class="wrapper">
+            <div></div><!--fixes wrong position of first row -->
+            <p class="element first">
+                #
+            </p>
+            <p class="element second">
+                Tytuł
+            </p>
+            <p class="element third">
+                Wykonawca
+            </p>
+            <p class="element fourth">
+                Rok wydania
+            </p>
+            <p class="element fifth">
+                <span uk-icon="clock"></span>
+            </p>
+        </div>
+    </li>
+    <div class="border-line"></div>
+    <li *ngFor="let track of tracks; let i = index;">
+        <div class="wrapper">
+            <div></div>
+            <p class="element first">
+                {{track.trackNumber}}
+            </p>
+            <p class="element second">
+                {{track.title}}
+            </p>
+            <p class="element third">
+                {{track.artistName}}
+            </p>
+            <p class="element fourth">
+                {{track.releaseYear}}
+            </p>
+            <p class="element fifth">
+                {{trackMinutesLength[i]}}:{{trackSecondsLength[i]}}
+            </p>
+        </div>
+    </li>
+</ul>

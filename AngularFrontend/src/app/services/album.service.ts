@@ -17,6 +17,10 @@ export class AlbumService {
     return this.http.get<Album[]>('http://localhost:5000/api/albums')
       .pipe(catchError(this.handleError));
   }
+  getAlbum(id: number){
+    return this.http.get<Album>('http://localhost:5000/api/albums/'+id)
+      .pipe(catchError(this.handleError));
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
