@@ -1,9 +1,9 @@
 <div *ngIf="this.album">
-    <div class="background uk-background-cover uk-light"   
+    <div class="uk-background-cover uk-light"   
         style="background-image: url({{album.pictureURL}});">
-        <div class="uk-text-center uk-child-width-1-3@m uk-child-width-1-1@s uk-grid-row-small blur" uk-grid>
-                <img *ngIf="!this.isSmallScreen"class ="hideImage" src={{album.pictureURL}}>
-                <div>
+        <div class="uk-child-width-1-2@l  uk-child-width-1-2@m uk-child-width-1-1@s uk-grid-row-small blur" uk-grid>
+                <img *ngIf="!this.isSmallScreen"class ="hideImage uk-flex-left" src={{album.pictureURL}}>
+                <div class="uk-text-center">
                     <h1>{{album.title}}</h1>
                     <h2>{{album.artistName}}</h2>
                     <h3>{{album.releaseYear}}</h3>

@@ -9,5 +9,16 @@ h1, h2, h3, p{
 }
 .blur {
   backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.37); 
+  background: rgba(0, 0, 0, 0.698); 
+}
+
+img {
+  width: 30vh;
+  height: auto;
+  margin:3%;
+}
+
+
+h1, h2, h3, p{
+  text-shadow: 5px 5px 10px #000000;
 }
