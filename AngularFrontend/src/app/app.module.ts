@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AlbumDetailsComponent } from './albums/album-details/album-details.component';
 import { TrackListComponent } from './albums/track-list/track-list.component';
+import { FilterComponent } from './albums/filter/filter.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TrackListComponent } from './albums/track-list/track-list.component';
     AlbumComponent,
     AlbumsListComponent,
     AlbumDetailsComponent,
-    TrackListComponent
+    TrackListComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

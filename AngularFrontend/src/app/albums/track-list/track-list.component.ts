@@ -12,12 +12,18 @@ export class TrackListComponent implements OnInit {
 
   @Input() tracks: Track[];
   trackMinutesLength:number[]=[];
-  trackSecondsLength:number[]=[];
+  trackSecondsLength:string[]=[];
   ngOnInit(): void {
     if(this.tracks){
+      var secondsNumber:number[]=[];
       for(var i=0; i<this.tracks.length;i++ ){
         this.trackMinutesLength[i]=Math.floor(this.tracks[i].length / 60);//get minutes length from seconds
-        this.trackSecondsLength[i]=this.tracks[i].length - this.trackMinutesLength[i] * 60;//get remaining seconds
+        secondsNumber[i]=this.tracks[i].length - this.trackMinutesLength[i] * 60;//get remaining seconds
+        this.trackSecondsLength[i] = secondsNumber[i].toLocaleString('en-US', {//digit formatting - adding 0 before one-digit number in track seconds length
+          minimumIntegerDigits: 2,
+          useGrouping: false
+        });
+
       } 
     }
   }

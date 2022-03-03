@@ -76,7 +76,17 @@ namespace WebApi.Helpers
                         ReleaseYear = 2022,
                         UserID = 2,
                         PictureURL = "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/atawizm.jpg?alt=media&token=301bc9c0-6d6d-400d-b92d-3b2c28a3c64b",
-                    }
+                    },
+                    new Album
+                    {
+                        //AlbumID = 1,
+                        Title = "Carte Blanche",
+                        ArtistName = "Vapes",
+                        Version = "Ep",
+                        ReleaseYear = 2016,
+                        UserID = 1,
+                        PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1607375590519?alt=media&token=8fab563e-f4de-404f-bca4-bf9d0b0e08db"                    
+                    },
                 };
                 foreach(Album a in albums)
                 {
@@ -123,7 +133,47 @@ namespace WebApi.Helpers
                         AlbumID = 1,
                         TrackNumber = 2,
                         Length= 385
-                    }
+                    },
+                    new Track
+                    {
+                        //ID = 1,
+                        Title = "Pociągi",
+                        ArtistName = "Koniec Lata",
+                        ReleaseYear = 2019,
+                        AlbumID = 2,
+                        TrackNumber = 3,
+                        Length= 205
+                    },
+                    new Track
+                    {
+                        //ID = 1,
+                        Title = "Akademia",
+                        ArtistName = "Koniec Lata",
+                        ReleaseYear = 2019,
+                        AlbumID = 2,
+                        TrackNumber = 4,
+                        Length= 287
+                    },
+                    new Track
+                    {
+                        //ID = 1,
+                        Title = "Carte Blanche",
+                        ArtistName = "Vapes",
+                        ReleaseYear = 2016,
+                        AlbumID = 4,
+                        TrackNumber = 1,
+                        Length= 366
+                    },
+                    new Track
+                    {
+                        //ID = 1,
+                        Title = "The Fence",
+                        ArtistName = "Vapes",
+                        ReleaseYear = 2015,
+                        AlbumID = 4,
+                        TrackNumber = 2,
+                        Length= 400
+                    },
                 };
                 foreach(Track t in tracks)
                 {
