@@ -87,6 +87,16 @@ namespace WebApi.Helpers
                         UserID = 1,
                         PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1607375590519?alt=media&token=8fab563e-f4de-404f-bca4-bf9d0b0e08db"                    
                     },
+                    new Album
+                    {
+                        //AlbumID = 1,
+                        Title = "NIKT",
+                        ArtistName = "Koniec Lata",
+                        Version = "Singiel",
+                        ReleaseYear = 2020,
+                        UserID = 1,
+                        PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1607375668049?alt=media&token=a26851f9-457c-4c9c-b668-b215e049b5b5"
+                    },
                 };
                 foreach(Album a in albums)
                 {
@@ -173,6 +183,16 @@ namespace WebApi.Helpers
                         AlbumID = 4,
                         TrackNumber = 2,
                         Length= 400
+                    },
+                    new Track
+                    {
+                        //ID = 1,
+                        Title = "Nikt",
+                        ArtistName = "Koniec Lata",
+                        ReleaseYear = 2020,
+                        AlbumID = 5,
+                        TrackNumber = 1,
+                        Length= 333
                     },
                 };
                 foreach(Track t in tracks)

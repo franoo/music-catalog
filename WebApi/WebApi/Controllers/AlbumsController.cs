@@ -53,7 +53,7 @@ namespace WebApi.Controllers
                             albums = albums.Where(a => a.Title.Contains(search));
                         }
                     }
-                    var result = await albums.Include(album => album.Tracks.OrderBy(t => t.TrackNumber)).ToListAsync();
+                    var result = await albums.OrderByDescending(a=> a.ReleaseYear).Include(album => album.Tracks.OrderBy(t => t.TrackNumber)).ToListAsync();
                     if (result != null)
                     {
                         return Ok(result);
