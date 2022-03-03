@@ -61,10 +61,10 @@ namespace WebApi.Controllers
                 }
                 catch (InvalidOperationException e)
                 {
-                    return BadRequest();
+                    return NotFound();
                 }
             }
-            return NotFound();
+            return BadRequest();
         }
 
         // GET: api/Albums/5

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SelectorMatcher } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Album } from '../models/album.model';
 import { AuthService } from './auth.service';
@@ -13,9 +13,20 @@ export class AlbumService {
 
   constructor(private http: HttpClient, authService: AuthService) { }
 
+  albumListChanged = new Subject<Album[]>();
+
   getAlbums(){
     return this.http.get<Album[]>('http://localhost:5000/api/albums')
       .pipe(catchError(this.handleError));
+  }
+  getAlbumsFilter(search:string, filter:string){
+   // http://localhost:5000/api/albums?search=Koniec&field=artist
+     this.http.get<Album[]>('http://localhost:5000/api/albums?search='+search+'&field='+filter)
+      .pipe(catchError(this.handleError)).subscribe((data:Album[])=>{
+        const albums:Album[] = data;
+        console.log(albums);
+        this.albumListChanged.next(albums);
+      })
   }
   getAlbum(id: number){
     return this.http.get<Album>('http://localhost:5000/api/albums/'+id)
