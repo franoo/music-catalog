@@ -95,8 +95,7 @@ namespace WebApi.Helpers
                         Version = "Singiel",
                         ReleaseYear = 2020,
                         UserID = 1,
-                        PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1607375668049?alt=media&token=a26851f9-457c-4c9c-b668-b215e049b5b5"
-                    },
+                        PictureURL= "https://firebasestorage.googleapis.com/v0/b/music-portfolio-df66a.appspot.com/o/1630669459566?alt=media&token=bac41ff2-ef02-4c5b-9be7-39b0da989ef8"                    },
                 };
                 foreach(Album a in albums)
                 {
