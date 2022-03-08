@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "ValeraRound";
+    src: local("ValeraRound"),  url(../../assets/fonts/VarelaRound-Regular.ttf) format("truetype");
+}
+.headerFont {
+    font-family: "ValeraRound", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  
+.header{
+    margin: 1.5%;
+    background-color: rgb(27, 27, 27);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+.align-right{
+    text-align: right;
+    margin-left: -5.5%;
+}

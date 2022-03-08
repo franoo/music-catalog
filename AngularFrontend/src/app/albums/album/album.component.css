@@ -5,7 +5,7 @@ h1, h2, h3, p{
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .hideImage {
       display: none !important;
   }
@@ -28,5 +28,9 @@ img {
 
 }
 
-.align-left{
+.center{
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
+

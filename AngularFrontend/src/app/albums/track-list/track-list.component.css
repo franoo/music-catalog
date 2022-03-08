@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
     display: grid;
     width: 100%; /* Set full-width to expand the whole page */
@@ -29,7 +29,7 @@
   }
   .border-line{
     border: 1px solid rgba(255, 255, 255, 0.445);
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
   }
   

@@ -32,9 +32,9 @@ export class AuthService {
         this.loggedUserSubject.next(response);
       }));
   }
-
-  public get loggedInUserValue(){
-    return this.loggedUserSubject.value;
+  get username(): string{
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    return user.username;
   }
   public isLogged(){
     if(this.loggedUserSubject.value)

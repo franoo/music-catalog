@@ -1,19 +1,23 @@
-<div>
-    <div class="uk-background-cover uk-light"
+<div class="">
+    <div class=" uk-background-cover uk-light"
     uk-parallax="bgy: -50"   
     style="background-image: url({{album.pictureURL}});">
-        <a [routerLink]="[album.albumID]"
-        routerLinkActive="active">
-            <div class="uk-child-width-1-2@l  uk-child-width-1-2@m uk-child-width-1-1@s uk-grid-collumn-collapse uk-grid-row-collapse blur" uk-grid>
-                    <img class ="hideImage uk-align-left" src={{album.pictureURL}}>
-                    <div class="margin align-left uk-grid-row-collapse uk-child-width-1-1 uk-width-expand" uk-grid>
-                        <h1>{{album.title}}</h1>
-                        <h2>{{album.artistName}}</h2>
-                        <h3>{{album.releaseYear}}</h3>
-                        <p>{{album.version}}</p>
-                        <p>utwory: {{tracksAmount}}</p>
+        <div class="blur">
+            <div class="center">
+                <a [routerLink]="[album.albumID]"
+                routerLinkActive="active">
+                    <div class="uk-child-width-1-2@l  uk-child-width-1-2@m uk-child-width-1-1@s" uk-grid>
+                        <img class ="hideImage uk-align-left" src={{album.pictureURL}}>
+                            <div class="margin uk-grid-row-collapse uk-child-width-1-1 uk-width-expand" uk-grid>
+                                <h1>{{album.title}}</h1>
+                                <h2>{{album.artistName}}</h2>
+                                <h3>{{album.releaseYear}}</h3>
+                                <p>{{album.version}}</p>
+                                <p>utwory: {{tracksAmount}}</p>
+                            </div>
                     </div>
+                </a>
             </div>
-        </a>
+        </div>
     </div>
 </div>
