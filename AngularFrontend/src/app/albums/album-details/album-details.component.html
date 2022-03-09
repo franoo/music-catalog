@@ -1,4 +1,9 @@
 <div *ngIf="this.album">
+    <div class="center">
+        <button class ="uk-button uk-button-secondary button-return-position" (click)="onReturnToAlbums()">
+            <div uk-icon="arrow-left"></div>
+            Powrót</button>
+    </div>
     <div class="uk-background-cover uk-light"
         style="background-image: url({{album.pictureURL}});">
         <div class="blur">

@@ -1,5 +1,7 @@
-<div class="uk-text-center">
-    <app-filter></app-filter>
+<div>
+    <div class="margin">
+        <app-filter ></app-filter>
+    </div>
     <ul class="uk-list">
         <li *ngFor="let album of this.albums; let i = index">
             <app-album [album]=album></app-album>

@@ -1,11 +1,12 @@
 <div class="header uk-child-width-1-2" uk-grid>
-    <div class="headerFont">
+    <div class="headerFont header-logo-margin">
         <a [routerLink]="['/albums']"routerLinkActive="active">
             <div class="uk-light">katalog-muzyczny</div>
         </a>
     </div>
     <div class="align-right">
-       <p *ngIf="this.loggedUser">Witaj, {{this.loggedUser}}
+       <p *ngIf="this.loggedUser">Witaj, {{this.loggedUser.username}}
+           <button class ="uk-button uk-button-secondary" (click)="onLogout()">Wyloguj</button>
     </p>
     </div>
 </div>

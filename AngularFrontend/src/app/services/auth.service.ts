@@ -33,10 +33,10 @@ export class AuthService {
       }));
   }
 
-  get username(): string{
+  get user(): UserLogged{
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     if(user != null){
-      return user.username;
+      return user;
     }
     return null;
   }

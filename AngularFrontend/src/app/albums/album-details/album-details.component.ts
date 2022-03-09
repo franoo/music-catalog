@@ -32,4 +32,8 @@ export class AlbumDetailsComponent implements OnInit {
     });
   }
 
+  onReturnToAlbums(){
+    this.router.navigate(["/albums"]);
+  }
+
 }

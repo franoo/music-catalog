@@ -1,8 +1,8 @@
 <form class="max-width"[formGroup]="searchForm" (ngSubmit)="submitForm()">
-    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-child-width-1-3">
-        <div class="uk-margin uk-child-width-1-2"uk-grid>
-            <button class="uk-button-small">Wyszukaj</button>
-            <input class="uk-input" type="text" formControlName="search" placeholder="Fitruj według">
+    <div class=" uk-grid-small uk-child-width-auto uk-grid uk-child-width-1-3">
+        <div class=""uk-grid>
+            <button class="uk-button uk-button-secondary uk-width-1-3 uk-text-center">Wyszukaj</button>
+            <input class="uk-input uk-width-2-3" type="text" formControlName="search" placeholder="Fitruj według">
         </div>
         <label><input class="uk-radio" value="artist" type="radio" formControlName="field" > Nazwa artysty</label>
         <label><input class="uk-radio" value="title" type="radio" formControlName="field" > Tytuł albumu</label>

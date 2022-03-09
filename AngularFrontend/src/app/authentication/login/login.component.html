@@ -1,16 +1,21 @@
 <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()" class="uk-position-center">
+    <div class="uk-margin uk-light">
+        <h4>
+            Zaloguj się 
+        </h4>
+    </div>
     <div class="uk-margin">
         <div class="uk-inline">
-            <input class="uk-form-width-medium" formControlName="username"  placeholder="Enter Username">   
+            <input class="uk-form-width-medium" formControlName="username"  placeholder="Nazwa użytkownika">   
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline">
-            <input class="uk-form-width-medium" formControlName="password" type="password" placeholder="Enter password">
+            <input class="uk-form-width-medium" formControlName="password" type="password" placeholder="Hasło">
         </div>
     </div>
     <div class="uk-margin">
-        <button type="submit" class="uk-button-default uk-button">Submit</button> 
+        <button type="submit" class="uk-button-default uk-button">Zaloguj</button> 
     </div>
 </form> 
 

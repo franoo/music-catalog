@@ -8,7 +8,6 @@
   }
   
 .header{
-    margin: 1.5%;
     background-color: rgb(27, 27, 27);
     margin-left: auto;
     margin-right: auto;
@@ -16,5 +15,10 @@
 }
 .align-right{
     text-align: right;
-    margin-left: -5.5%;
+    margin-left: -3.5%;
+    margin-top: 0.5%;
 }
+.header-logo-margin{
+    margin-top:1%;
+}
+
