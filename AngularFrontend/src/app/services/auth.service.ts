@@ -4,6 +4,7 @@ import {UserLogged} from "../models/userLogged.model";
 import { BehaviorSubject } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { UserLogin } from '../models/userLogin.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,6 @@ export class AuthService {
   }
   loggedUserSubject= new BehaviorSubject<UserLogged>(null as any);
   loggedUserData=this.loggedUserSubject.asObservable();
-
 
   login(userLogin : UserLogin ) {
       let body={
@@ -32,20 +32,26 @@ export class AuthService {
         this.loggedUserSubject.next(response);
       }));
   }
+
   get username(): string{
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    return user.username;
+    if(user != null){
+      return user.username;
+    }
+    return null;
   }
-  public isLogged(){
-    if(this.loggedUserSubject.value)
-      return true;
-    return false;
+
+  public isLogged():boolean{
+    const jwtHelper = new JwtHelperService();
+    return !jwtHelper.isTokenExpired(this.getToken());
   }
+
   public logout(){
     localStorage.removeItem('loggedInUser');
     this.loggedUserSubject.next(null);
   }
-  public getToken(){
+
+  private getToken(){
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if(loggedInUser){
       let token = loggedInUser.jwtToken;
